@@ -11,6 +11,7 @@ contract ExampleTokenCrowdsale is Crowdsale, MintedCrowdsale, CappedCrowdsale{
 	//maximum investor Contribution - 50000000000000000000 ether (50)
 	uint256 public investorMinCap = 5000000000000000000;
 	uint256 public investorHardCap = 50000000000000000000;
+  uint256 totalTokensSpent = 0;
 
 	mapping(address => uint256) public contributions;
 
@@ -23,9 +24,8 @@ contract ExampleTokenCrowdsale is Crowdsale, MintedCrowdsale, CappedCrowdsale{
 	public{
 	}
 
-  function getTokensLeft(address _account) constant public returns (uint256) {
-    uint256 existingContribution = contributions[_account];
-    uint256 tokensLeft = cap - existingContribution;
+  function getTokensLeft() constant public returns (uint256) {
+    uint256 tokensLeft = cap - totalTokensSpent;
     return tokensLeft;
   }
  
@@ -39,7 +39,8 @@ contract ExampleTokenCrowdsale is Crowdsale, MintedCrowdsale, CappedCrowdsale{
     uint256 _existingContribution = contributions[_beneficiary];
     uint256 _newContribution = _existingContribution.add(_weiAmount);
     require(_newContribution >= investorMinCap && _newContribution <= investorHardCap, "error: Invalid contribution value.");
-    require (_existingContribution == 0, "error: there has already been a purchase from this account.");
+    require(_existingContribution == 0, "error: there has already been a purchase from this account.");
+    totalTokensSpent = totalTokensSpent + _newContribution;
 	  contributions[_beneficiary] = _newContribution;     
   }
    
