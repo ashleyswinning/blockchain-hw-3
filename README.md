@@ -2,7 +2,7 @@
 Ashley Huynh
 CSC 4980 Assignment #3
 
-### How to Run Programs:
+# How to Run Programs:
 
 ## Prerequisites:
 * ###### Make sure you are in the `blockchain-hw-3` directory.
@@ -52,7 +52,7 @@ This should return `undefined` in the console. (_Please note: it's very importan
   * In both scenarios, `_account` is the account you're checking the token remainder on (ex: `web3.eth.accounts[0]`).
 
 
-### Solutions
+# Solutions
 ###### Homework Example Results
 * 
 ###### Tutorial Example Results
