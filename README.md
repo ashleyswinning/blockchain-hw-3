@@ -7,9 +7,9 @@ CSC 4980 Assignment #3
 ## Prerequisites:
 * ###### Make sure you are in the `blockchain-hw-3` directory.
 
-* ###### Make sure you have Truffle version 4.1.15. To check, run `truffle version` and you should see the following:
- `Truffle v4.1.15 (core: 4.1.15)`
- `Solidity v0.4.25 (solc-js)`
+* ###### Make sure you have Truffle version 4.1.15. I had some difficulty with more recent version registering older versions of `openzepplin-solidity` and this was my workaround. To check, run `truffle version` and you should see the following:
+`Truffle v4.1.15 (core: 4.1.15)`
+`Solidity v0.4.25 (solc-js)`
 
 * ###### If you don't, then run `npm install -g truffle@4.1.15`, which requires the npm package. In order to do this, you may need to install Node, which is available via homebrew on Mac. For more information please check out the following link: https://changelog.com/posts/install-node-js-with-homebrew-on-os-x 
 
