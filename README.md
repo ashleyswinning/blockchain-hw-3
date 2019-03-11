@@ -67,23 +67,23 @@ This should return `undefined` in the console.
 * run `ExampleTokenCrowdsale.new(500, web3.eth.accounts[0], token.address , new web3.BigNumber(web3.toWei(200, 'ether'))).then((t) => {sale = t;})`
 * run `token.transferOwnership(sale.address)`
 
-** Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(1, 'ether')) , from : web3.eth.accounts[1]});` **
+> Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(1, 'ether')) , from : web3.eth.accounts[1]});`
 * Upon running this, it failed. This is because the contribution cap in the tutorial is 2 ether.
 
-** Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(2, 'ether')) , from : web3.eth.accounts[1]});` **
+> Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(2, 'ether')) , from : web3.eth.accounts[1]});`
 * Upon running this, it succeeded. This is because the contribution cap in the tutorial is 2 ether.
 
-** Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(48, 'ether')) , from : web3.eth.accounts[1]});` **
+> Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(48, 'ether')) , from : web3.eth.accounts[1]});`
 * Upon running this, it succeeded. This is because the contribution cap in the tutorial is 2 ether and 48 > 2.
 
-** Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(1, 'ether')) , from : web3.eth.accounts[1]});` **
+> Run `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(1, 'ether')) , from : web3.eth.accounts[1]});`
 * Upon running this, it failed. This is because the maximum investor cap `investorHardCap` is 50 ether and we purchased 2 and 48 ether for `web3.eth.accounts[1]`, which has reached the max.
 
-** Run `token.balanceOf(web3.eth.accounts[1]).then(result => result.toNumber())` **
+> Run `token.balanceOf(web3.eth.accounts[1]).then(result => result.toNumber())`
 * Upon running this, it returned `2.5e+22`.
 
 ###### Tutorial (Tweaked for the Homework) Results
-**Preliminary steps for all cases: **
+**Preliminary steps for all cases:**
 * run `truffle compile`
 * run `truffle develop`
 * run `migrate --reset`
@@ -91,17 +91,17 @@ This should return `undefined` in the console.
 * run `ExampleTokenCrowdsale.new(500, web3.eth.accounts[0], token.address , new web3.BigNumber(web3.toWei(200, 'ether'))).then((t) => {sale = t;})`
 * run `token.transferOwnership(sale.address)`
 
-**Change minimum contribution to 5 ether: **
+**Change minimum contribution to 5 ether:**
 * To do this, changed `investorMinCap` variable in `ExampleTokenCrowdsale.sol` from `2000000000000000000` (2 ether) to `5000000000000000000` (5 ether).
 
 * To test, try to do a sale `sale.buyTokens(web3.eth.accounts[1], {value : new web3.BigNumber(web3.toWei(1, 'ether')) , from : web3.eth.accounts[1]});`, where the purchase amount is 5 ether. It should fail, as the new minimum is 5.
 
-**Add method `getTokensLeft()`: **
+**Add method `getTokensLeft()`:**
 * To do this, added into `ExampleTokenCrowdsale.sol` a function: ` getTokensLeft()()` that checks the remaining number of tokens left in the crowdsale based on the specified cap. It is a constant public function (constant so it can properly return a value) that returns a uint256 variable, the number of tokens left.
 
 * To test, run `sale.getTokensLeft().then(result => result.toNumber())` . Then, run it again after running a valid transaction like `sale.buyTokens(web3.eth.accounts[0], {value : new web3.BigNumber(web3.toWei(10, 'ether')) , from : web3.eth.accounts[1]});` and notice the difference between the value it returns before and after a sale happens. Further, you can test between different account transactions by running a valid transaction on another account like `sale.buyTokens(web3.eth.accounts[0], {value : new web3.BigNumber(web3.toWei(10, 'ether')) , from : web3.eth.accounts[1]});` -- it should subtract from the previous value to continuously decrease the # of tokens left in this crowdsale.
 
-**Added needed functionality to not allow > 1 purchase per account: **
+**Added needed functionality to not allow > 1 purchase per account:**
 * To do this, added another require statement `require (_existingContribution == 0, "error: there has already been a purchase from this account.");` in the `_preValidatePurchase` function in `ExampleTokenCrowdsale.sol` that checks if the `_existingContribution` of a certain account is > 0. 
 
 * If it is (meaning there has been a contribution made for this account), then an error is thrown and a custom error message, `"error: there has already been a purchase from this account."` is printed.
@@ -111,7 +111,7 @@ This should return `undefined` in the console.
 * The first transaction should run successfully, the second transaction should return an error.
 
 ###### Homework Example Results
-**Preliminary steps: **
+**Preliminary steps:**
 * run `truffle compile`
 * run `truffle develop`
 * run `migrate --reset`
@@ -119,20 +119,20 @@ This should return `undefined` in the console.
 * run `ExampleTokenCrowdsale.new(450, web3.eth.accounts[0], token.address , new web3.BigNumber(web3.toWei(150, 'ether'))).then((t) => {sale = t;})`
 * run `token.transferOwnership(sale.address)`
 
-**1. Try to buy tokens with 2.5 ether: ** 
+**1. Try to buy tokens with 2.5 ether:** 
 * Run `sale.buyTokens(web3.eth.accounts[0], {value : new web3.BigNumber(web3.toWei(2.5, 'ether')) , from : web3.eth.accounts[1]});`.
 
 * An error is returned.
 
-**2. Buy tokens with 15 ether: ** 
+**2. Buy tokens with 15 ether:** 
 * Run `sale.buyTokens(web3.eth.accounts[0], {value : new web3.BigNumber(web3.toWei(15, 'ether')) , from : web3.eth.accounts[1]});`.
 
 * `web3.eth.accounts[0]` has now spent 15 ether. The transaction is successful.
 
-**3. Return how many tokens are left: ** 
+**3. Return how many tokens are left:** 
 * Run `sale.getTokensLeft().then(result => result.toNumber())` to see how many tokens remain in the crowdsale. (or `sale.getTokensLeft().then(result => web3.fromWei(result.toNumber(), "ether" ))` if it's easier to see the ether conversion of it)
 
-**4. Buy tokens (again) with 25 Ether: ** 
+**4. Buy tokens (again) with 25 Ether:** 
 * Run `sale.buyTokens(web3.eth.accounts[0], {value : new web3.BigNumber(web3.toWei(25, 'ether')) , from : web3.eth.accounts[1]});`.
 
 * This should return an error `error: there has already been a purchase from this account.` and be unsuccessful -- `web3.eth.accounts[0]` has already invested in a transaction. 
