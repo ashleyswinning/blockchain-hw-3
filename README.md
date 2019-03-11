@@ -24,13 +24,20 @@ CSC 4980 Assignment #3
   * `_name` is the name of the token
   * `_symbol` is the symbol (ex: EXM or GSU)>
   * `_decimals` is the number of desired decimal places. 
-This should return `undefined` in the console. (_Please note: it's very important to use *`.new()`* and not *`.deployed()`*, as it creates a NEW instance of the contract that doesn't have the arbitrary contract variables used in the `2_deploy_contracts.js` file._)
+  
+This should return `undefined` in the console. 
+
+*_Please note: it's very important to use *`.new()`* and not *`.deployed()`*, as it creates a NEW instance of the contract that doesn't have the arbitrary contract variables used in the `2_deploy_contracts.js` file._*
 
 * You must now instantiate an instance of ExampleTokenCrowdsale -- run `ExampleTokenCrowdsale.new(_rate, _wallet, _token , _cap)).then((t) => {sale = t;})`, where:
   * `_rate` is the rate for how many tokens per ether 
   * `_wallet` is the specified wallet (ex: `web3.eth.accounts[0]`)
   * `_token` is the token referenced in `ExampleToken`'s address (`token.address` in this case)
-  * `_cap` is the max number of ether available. This should return `undefined` in the console. (_Please note: it's very important to use *`.new()`* and not *`.deployed()`*, as it creates a NEW instance of the contract that doesn't have the arbitrary contract variables used in the `2_deploy_contracts.js` file._)
+  * `_cap` is the max number of ether available. 
+  
+  This should return `undefined` in the console. 
+  
+*_Please note: it's very important to use *`.new()`* and not *`.deployed()`*, as it creates a NEW instance of the contract that doesn't have the arbitrary contract variables used in the `2_deploy_contracts.js` file._*
 
 * Now, you must run `token.transferOwnership(sale.address)` to transfer ownership of `token contract` to `crowdsale contract` in order to mint tokens.
 
