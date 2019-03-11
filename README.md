@@ -59,7 +59,8 @@ This should return `undefined` in the console.
 
 
 # Solutions
-###### Tutorial Testing Transaction Results
+## Tutorial Testing Transaction Results
+**Preliminary steps:**
 * run `truffle compile`
 * run `truffle develop`
 * run `migrate --reset`
@@ -82,8 +83,8 @@ This should return `undefined` in the console.
 > Run `token.balanceOf(web3.eth.accounts[1]).then(result => result.toNumber())`
 * Upon running this, it returned `2.5e+22`.
 
-###### Tutorial (Tweaked for the Homework) Results
-**Preliminary steps for all cases:**
+## Tutorial (Tweaked for the Homework) Results
+**Preliminary steps:**
 * run `truffle compile`
 * run `truffle develop`
 * run `migrate --reset`
@@ -110,7 +111,7 @@ This should return `undefined` in the console.
 
 * The first transaction should run successfully, the second transaction should return an error.
 
-###### Homework Example Results
+## Homework Example Results
 **Preliminary steps:**
 * run `truffle compile`
 * run `truffle develop`
