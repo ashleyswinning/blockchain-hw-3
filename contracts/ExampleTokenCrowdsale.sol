@@ -24,7 +24,7 @@ contract ExampleTokenCrowdsale is Crowdsale, MintedCrowdsale, CappedCrowdsale{
 	public{
 	}
 
-  function getTokensLeft() constant public returns (uint256) {
+  function getTokensLeft() view public returns (uint256) {
     uint256 tokensLeft = cap - totalTokensSpent;
     return tokensLeft;
   }
