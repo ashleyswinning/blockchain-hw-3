@@ -13,7 +13,7 @@ CSC 4980 Assignment #3
 
  > `Solidity v0.4.25 (solc-js)`
 
-* ###### If you don't, then run `npm install -g truffle@4.1.15`, which requires the npm package. In order to do this, you may need to install Node, which is available via homebrew on Mac. For more information please check out the following link: https://changelog.com/posts/install-node-js-with-homebrew-on-os-x 
+* ###### If you don't, then run `sudo npm install -g truffle@4.1.15`, which requires the npm package. In order to do this, you may need to install Node, which is available via homebrew on Mac. For more information please check out the following link: https://changelog.com/posts/install-node-js-with-homebrew-on-os-x 
 
 ## Instructions:
 * Run `truffle compile`
