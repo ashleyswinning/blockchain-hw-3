@@ -7,7 +7,7 @@ CSC 4980 Assignment #3
 ## Prerequisites:
 * ###### Make sure you are in the `blockchain-hw-3` directory.
 
-* ###### Make sure you have Truffle version 4.1.15. I had some difficulty with more recent version being incompatible with older versions of `openzepplin-solidity` and this was my workaround. To check, run `truffle version` and you should see the following:
+* ###### Make sure you have Truffle version 4.1.15. I had some difficulty with more recent version being incompatible with older versions of `openzepplin-solidity` and after lots of tinkering with `truffle-config.js` in Truffle 5.0.7, this was my workaround. To check, run `truffle version` and you should see the following:
 
  > `Truffle v4.1.15 (core: 4.1.15)`
 
