@@ -1,4 +1,4 @@
-# blockchain-hw-3
+# Capped Crowdsale
 Ashley Huynh
 CSC 4980 Assignment #3
 
